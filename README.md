@@ -49,7 +49,7 @@
 </div>
 
 
-<div align="center" style="border: 2px solid #00ff99; border-radius: 15px; padding: 25px; margin-bottom: 30px; background-color: #121212;">
+<!-- <div align="center" style="border: 2px solid #00ff99; border-radius: 15px; padding: 25px; margin-bottom: 30px; background-color: #121212;">
   <h2 style="color: #00ff99;">🛠️ Tech Stack</h2>
   <p>
     <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>
@@ -94,7 +94,7 @@
     <img src="https://img.shields.io/badge/canva-%2300C4CC.svg?style=for-the-badge&logo=canva&logoColor=white"/>
     <img src="https://img.shields.io/badge/adobe-%23FF0000.svg?style=for-the-badge&logo=adobe&logoColor=white"/>
   </p>
-</div>
+</div> -->
 
 <!-- 🏆 GitHub Trophies 
 <div align="center" display style="border: 2px solid #ff1493; border-radius: 15px; padding: 25px; margin-bottom: 30px; background-color: #121212;">
