@@ -1,6 +1,6 @@
 <!-- GitHub README.md -->
 
-<div align="center" style="border: 2px solid #1e90ff; border-radius: 15px; padding: 25px; margin-bottom: 30px; background-color: #121212;">
+<!-- <div align="center" style="border: 2px solid #1e90ff; border-radius: 15px; padding: 25px; margin-bottom: 30px; background-color: #121212;">
   <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
     <img 
       src="https://streak-stats.demolab.com?user=yonas790&theme=dark&border_radius=10&stroke=87cefa&ring=00bfff&fire=1e90ff&currStreakNum=87cefa&hide_border=true"
@@ -46,7 +46,7 @@
    <p align="center">
      A passionate and skilled <strong>Software Engineer</strong> who loves solving real-world problems through code.
    </p>
-</div>
+</div> -->
 
 
 <!-- <div align="center" style="border: 2px solid #00ff99; border-radius: 15px; padding: 25px; margin-bottom: 30px; background-color: #121212;">
