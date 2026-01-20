@@ -102,3 +102,10 @@
   <img src="https://github-profile-trophy.vercel.app/?username=yonas790&theme=radical&no-frame=false&no-bg=true&margin-w=4" />
 </div>
 -->
+<div align="center">
+   <p align="center">👋</p>
+   <h2 align="center"><strong>Hi there! I'm Yonas Tesera</strong></h2>
+   <!-- <p align="center">
+     A passionate and skilled <strong>Software Engineer</strong> who loves solving real-world problems through code.
+   </p> -->
+</div>
