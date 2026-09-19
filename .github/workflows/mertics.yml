@@ -1,0 +1,50 @@
+# Save this file in your profile repo as: .github/workflows/metrics.yml
+name: Metrics
+
+on:
+  # Refresh once a day
+  schedule: [{ cron: "0 0 * * *" }]
+  # Lets you run it manually from the Actions tab
+  workflow_dispatch:
+  # Also runs when you push to the default branch
+  push: { branches: ["main", "master"] }
+
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          # Personal access token stored as a repo secret named METRICS_TOKEN
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: yonas-tesera
+
+          # Dark neon look from your screenshot
+          template: terminal
+          filename: github-metrics.svg
+          config_timezone: Africa/Addis_Ababa
+
+          # Header, Activity, Community stats, Repositories
+          base: header, activity, community, repositories, metadata
+
+          # Isometric "Contributions calendar" + streaks / commits per day
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: half-year
+
+          # "Languages" section with the colored bar
+          plugin_languages: yes
+          plugin_languages_sections: most-used
+          plugin_languages_details: bytes-size, percentage
+
+          # "Recent coding habits"
+          plugin_habits: yes
+          plugin_habits_from: 200
+          plugin_habits_days: 14
+
+          # "Mastered technologies and topics"
+          plugin_topics: yes
+          plugin_topics_mode: mastered
+          plugin_topics_sort: stars
+          plugin_topics_limit: 15
