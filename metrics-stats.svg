@@ -1,10 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="590" height="88" viewBox="0 0 590 88">
+<svg xmlns="http://www.w3.org/2000/svg" width="422" height="24" viewBox="0 0 422 24">
 <style>
-  .v { font: 700 26px 'Segoe UI', Ubuntu, sans-serif; fill: #1f2328 }
-  .l { font: 13px 'Segoe UI', Ubuntu, sans-serif; fill: #656d76 }
+  text { font: 12px 'Fira Code', ui-monospace, SFMono-Regular, Menlo, monospace; white-space: pre }
+  .p { fill: none; stroke: #d0d7de }
+  .v { fill: #1f2328; font-weight: 700 }
+  .l { fill: #656d76 }
   @media (prefers-color-scheme: dark) {
-    .v { fill: #e6edf3 } .l { fill: #8b949e }
+    .p { stroke: #30363d } .v { fill: #e6edf3 } .l { fill: #8b949e }
   }
 </style>
-<text x="20" y="42" class="v">2020</text><text x="20" y="64" class="l">joined</text><text x="165" y="42" class="v">59</text><text x="165" y="64" class="l">longest streak</text><text x="310" y="42" class="v">17</text><text x="310" y="64" class="l">followers</text><text x="455" y="42" class="v">55</text><text x="455" y="64" class="l">repositories</text>
+<rect x="0" y="1" width="99" height="22" rx="11" class="p"/><text x="10" y="16"><tspan class="v">2020</tspan><tspan class="l"> joined</tspan></text><rect x="105" y="1" width="121" height="22" rx="11" class="p"/><text x="115" y="16"><tspan class="v">59</tspan><tspan class="l"> best streak</tspan></text><rect x="232" y="1" width="106" height="22" rx="11" class="p"/><text x="242" y="16"><tspan class="v">17</tspan><tspan class="l"> followers</tspan></text><rect x="344" y="1" width="78" height="22" rx="11" class="p"/><text x="354" y="16"><tspan class="v">55</tspan><tspan class="l"> repos</tspan></text>
 </svg>
