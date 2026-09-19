@@ -1,4 +1,4 @@
-"""Generate metrics-stats.svg: joined year, longest streak, followers."""
+"""Generate metrics-stats.svg: joined year, best streak, followers, repos."""
 import datetime as dt
 import json
 import os
@@ -55,28 +55,34 @@ for date in sorted(days):
 
 items = [
     (str(created.year), "joined"),
-    (f"{longest}", "longest streak"),
-    (f"{profile['followers']['totalCount']}", "followers"),
-    (f"{profile['repositories']['totalCount']}", "repositories"),
+    (str(longest), "best streak"),
+    (str(profile["followers"]["totalCount"]), "followers"),
+    (str(profile["repositories"]["totalCount"]), "repos"),
 ]
 
-cells = ""
-for i, (value, label) in enumerate(items):
-    x = 20 + i * 145
-    cells += (
-        f'<text x="{x}" y="42" class="v">{value}</text>'
-        f'<text x="{x}" y="64" class="l">{label}</text>'
+CHAR, PAD, GAP, H = 7.2, 10, 6, 22  # monospace 12px, pill padding, gap, height
+pills, x = "", 0
+for value, label in items:
+    w = round((len(value) + 1 + len(label)) * CHAR + PAD * 2)
+    pills += (
+        f'<rect x="{x}" y="1" width="{w}" height="{H}" rx="{H // 2}" class="p"/>'
+        f'<text x="{x + PAD}" y="16"><tspan class="v">{value}</tspan>'
+        f'<tspan class="l"> {label}</tspan></text>'
     )
+    x += w + GAP
+total = x - GAP
 
-svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="590" height="88" viewBox="0 0 590 88">
+svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{total}" height="{H + 2}" viewBox="0 0 {total} {H + 2}">
 <style>
-  .v {{ font: 700 26px 'Segoe UI', Ubuntu, sans-serif; fill: #1f2328 }}
-  .l {{ font: 13px 'Segoe UI', Ubuntu, sans-serif; fill: #656d76 }}
+  text {{ font: 12px 'Fira Code', ui-monospace, SFMono-Regular, Menlo, monospace; white-space: pre }}
+  .p {{ fill: none; stroke: #d0d7de }}
+  .v {{ fill: #1f2328; font-weight: 700 }}
+  .l {{ fill: #656d76 }}
   @media (prefers-color-scheme: dark) {{
-    .v {{ fill: #e6edf3 }} .l {{ fill: #8b949e }}
+    .p {{ stroke: #30363d }} .v {{ fill: #e6edf3 }} .l {{ fill: #8b949e }}
   }}
 </style>
-{cells}
+{pills}
 </svg>
 """
 open("metrics-stats.svg", "w").write(svg)
