@@ -8,5 +8,5 @@
     .p { stroke: #30363d } .v { fill: #e6edf3 } .l { fill: #8b949e }
   }
 </style>
-<rect x="0" y="1" width="99" height="22" rx="11" class="p"/><text x="10" y="16"><tspan class="v">2020</tspan><tspan class="l"> joined</tspan></text><rect x="105" y="1" width="121" height="22" rx="11" class="p"/><text x="115" y="16"><tspan class="v">59</tspan><tspan class="l"> best streak</tspan></text><rect x="232" y="1" width="106" height="22" rx="11" class="p"/><text x="242" y="16"><tspan class="v">17</tspan><tspan class="l"> followers</tspan></text><rect x="344" y="1" width="78" height="22" rx="11" class="p"/><text x="354" y="16"><tspan class="v">55</tspan><tspan class="l"> repos</tspan></text>
+<rect x="0" y="1" width="99" height="22" rx="11" class="p"/><text x="10" y="16"><tspan class="v">2020</tspan><tspan class="l"> joined</tspan></text><rect x="105" y="1" width="121" height="22" rx="11" class="p"/><text x="115" y="16"><tspan class="v">59</tspan><tspan class="l"> best streak</tspan></text><rect x="232" y="1" width="106" height="22" rx="11" class="p"/><text x="242" y="16"><tspan class="v">18</tspan><tspan class="l"> followers</tspan></text><rect x="344" y="1" width="78" height="22" rx="11" class="p"/><text x="354" y="16"><tspan class="v">55</tspan><tspan class="l"> repos</tspan></text>
 </svg>
