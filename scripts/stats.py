@@ -11,6 +11,14 @@ USER = os.environ["GH_USER"]
 TOKEN = os.environ["GH_TOKEN"]
 
 
+def format_count(n):
+    """1234 -> '1.2K', 999 -> '999' (truncates, doesn't round)."""
+    if n < 1000:
+        return str(n)
+    value = f"{n // 100 / 10:.1f}".rstrip("0").rstrip(".")
+    return f"{value}K"
+
+
 def gql(query, **variables):
     req = urllib.request.Request(
         "https://api.github.com/graphql",
@@ -101,7 +109,7 @@ if os.path.exists(calendar_path):
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">'
         '<path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm1.43.75a4.002 4.002 0 01-7.86 0H.75a.75.75 0 110-1.5h3.32a4.001 4.001 0 017.86 0h3.32a.75.75 0 110 1.5h-3.32z"/>'
         "</svg>"
-        f"Total commits {total_commits}"
+        f"Total commits {format_count(total_commits)}"
         "</div>"
     )
     calendar = re.sub(
