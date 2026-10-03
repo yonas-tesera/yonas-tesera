@@ -1,7 +1,10 @@
-"""Generate metrics-stats.svg: joined year, total PRs, total contribs, streak, followers, repos."""
+"""Generate metrics-stats.svg: joined year, total contribs, followers, repos.
+Also patches metrics-calendar.svg, swapping its "Best streak" field for the
+all-time total PR count."""
 import datetime as dt
 import json
 import os
+import re
 import urllib.request
 
 USER = os.environ["GH_USER"]
@@ -46,20 +49,9 @@ for year in range(created.year, now.year + 1):
 
 total_contribs = sum(days.values())
 
-dates = sorted(days)
-idx = len(dates) - 1
-if days[dates[idx]] == 0:  # today may not have contributions yet
-    idx -= 1
-streak = 0
-while idx >= 0 and days[dates[idx]] > 0:
-    streak += 1
-    idx -= 1
-
 items = [
     (str(created.year), "joined"),
-    (str(profile["pullRequests"]["totalCount"]), "total PRs"),
     (str(total_contribs), "contribs"),
-    (str(streak), "streak"),
     (str(profile["followers"]["totalCount"]), "followers"),
     (str(profile["repositories"]["totalCount"]), "repos"),
 ]
@@ -90,3 +82,15 @@ svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{total}" height="{H + 2
 </svg>
 """
 open("metrics-stats.svg", "w").write(svg)
+
+# Swap the calendar block's "Best streak" field for the all-time total PR
+# count, keeping it in the same position.
+calendar_path = "metrics-calendar.svg"
+if os.path.exists(calendar_path):
+    calendar = open(calendar_path).read()
+    calendar = re.sub(
+        r"Best streak \d+ days?",
+        f'Total PRs {profile["pullRequests"]["totalCount"]}',
+        calendar,
+    )
+    open(calendar_path, "w").write(calendar)
