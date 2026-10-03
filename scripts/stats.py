@@ -1,4 +1,4 @@
-"""Generate metrics-stats.svg: joined year, best streak, followers, repos."""
+"""Generate metrics-stats.svg: joined year, total PRs, total contribs, streak, followers, repos."""
 import datetime as dt
 import json
 import os
@@ -22,7 +22,9 @@ def gql(query, **variables):
 
 
 profile = gql(
-    "query($u:String!){user(login:$u){createdAt followers{totalCount} repositories(ownerAffiliations:OWNER){totalCount}}}", u=USER
+    "query($u:String!){user(login:$u){createdAt followers{totalCount} "
+    "repositories(ownerAffiliations:OWNER){totalCount} pullRequests{totalCount}}}",
+    u=USER,
 )
 created = dt.datetime.fromisoformat(profile["createdAt"].replace("Z", "+00:00"))
 now = dt.datetime.now(dt.timezone.utc)
@@ -42,20 +44,22 @@ for year in range(created.year, now.year + 1):
         for d in week["contributionDays"]:
             days[d["date"]] = d["contributionCount"]
 
-longest = run = 0
-prev = None
-for date in sorted(days):
-    day = dt.date.fromisoformat(date)
-    if days[date] > 0:
-        run = run + 1 if prev and (day - prev).days == 1 else 1
-        prev = day
-        longest = max(longest, run)
-    else:
-        run, prev = 0, None
+total_contribs = sum(days.values())
+
+dates = sorted(days)
+idx = len(dates) - 1
+if days[dates[idx]] == 0:  # today may not have contributions yet
+    idx -= 1
+streak = 0
+while idx >= 0 and days[dates[idx]] > 0:
+    streak += 1
+    idx -= 1
 
 items = [
     (str(created.year), "joined"),
-    (str(longest), "best streak"),
+    (str(profile["pullRequests"]["totalCount"]), "total PRs"),
+    (str(total_contribs), "contribs"),
+    (str(streak), "streak"),
     (str(profile["followers"]["totalCount"]), "followers"),
     (str(profile["repositories"]["totalCount"]), "repos"),
 ]

@@ -41,7 +41,7 @@ jobs:
           plugin_languages_details: percentage
           plugin_languages_limit: 5
 
-      # Joined year, longest streak, followers
+      # Joined year, total PRs, total contribs, streak, followers, repos
       - name: Generate stats card
         env:
           GH_USER: yonas-tesera
